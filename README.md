@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="MyNiro/Assets.xcassets/AppIcon.appiconset/AppIcon.png" alt="MyNiro app icon" width="128" />
+</p>
+
 # MyNiro
 
 Personal Kia Connect (Europe) companion for iOS — charging, climate, unlock, widgets, and Apple Watch.
