@@ -14,6 +14,10 @@ Personal Kia Connect (Europe) companion for iOS — charging, climate, unlock, w
 
 ## Screenshots
 
+<p align="center">
+  <img src="docs/screenshots/charge-limit-sheet.gif" alt="MyNiro charge limit sheet demo" width="280" />
+</p>
+
 | Car tab | Home Screen widget |
 | :---: | :---: |
 | <img src="docs/screenshots/app-car-tab.png" alt="MyNiro car tab showing battery, charging, lock, and climate" width="280" /> | <img src="docs/screenshots/widget-home-screen.png" alt="MyNiro home screen widget with battery, range, and quick actions" width="280" /> |
