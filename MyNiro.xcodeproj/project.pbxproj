@@ -1,0 +1,885 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0695086A22035F576B2B117C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7910A8D0BDBC403A3DDE8670 /* Assets.xcassets */; };
+		0AFB3ABBCE8DD08D7AAF9C42 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */; };
+		12B06A373D875D67FE35C1DB /* VehicleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */; };
+		1838EC15985702C1E724E5E0 /* VehicleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */; };
+		21C12D3F1BFFD1888BB6874D /* BetterBlueKit in Frameworks */ = {isa = PBXBuildFile; productRef = 21CE6C55A21117872F67D0BC /* BetterBlueKit */; };
+		264794005786650642479260 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59A83A95856EE0F4E9885EFD /* Assets.xcassets */; };
+		36FD1CAB523DB32EFE3889D6 /* WatchWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20695EEA5688E75BA5E1B1C0 /* WatchWidgets.swift */; };
+		37B2AAC3D0C8AB5A12D0E7EE /* MyNiroWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BDA5DDEF43E67E48FDA8FDD3 /* MyNiroWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3DA06EFA40E20D46E5063DCF /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */; };
+		41634698C09C75AF3DF00E4D /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */; };
+		4D39B2EEBE11B3A1692914D0 /* MyNiroWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC73C5A1D2E4314E9EF7AC7 /* MyNiroWidgetBundle.swift */; };
+		4EBA57F92322AD71D090AC42 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */; };
+		563E87C580FD12787D96CA9A /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */; };
+		5C88F82CBB78984C006F7E1C /* VehicleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */; };
+		5D3867EE9EC36C3B8088A725 /* MyNiroWatchWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0B7705EDF4F51BF56730EE0B /* MyNiroWatchWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6312D16C14F30F52342B9006 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92354C9835AD3BF83D263E1B /* Theme.swift */; };
+		68139214B725038C0A752860 /* MyNiroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07974D6377669CC6D3B0B6AE /* MyNiroApp.swift */; };
+		6C147295F503F60D268191C3 /* VehicleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */; };
+		782B70B13627F9C7E92F4C80 /* VehicleIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0800F092676AAD4441354CAF /* VehicleIntents.swift */; };
+		78486EEA633325194188843E /* CarTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DCC193303B7DF41AC6CF6B /* CarTabView.swift */; };
+		809B446FF2313B5534A6D788 /* VehicleIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0800F092676AAD4441354CAF /* VehicleIntents.swift */; };
+		820E88ABF5C320337C1B2C5C /* BetterBlueKit in Frameworks */ = {isa = PBXBuildFile; productRef = F206DE7830153515CAF7B3B8 /* BetterBlueKit */; };
+		85C7AD9BD1618295C432ADB7 /* MyNiroWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B506B3C558C7FDFAF9077C2 /* MyNiroWatchApp.swift */; };
+		8EE22284C80390C14E23C30B /* VehicleIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0800F092676AAD4441354CAF /* VehicleIntents.swift */; };
+		929B973000C1BACC0D4691C5 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */; };
+		96429FB24FE2A41A2109944C /* ClimateDefaultsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E7B542B4736C7B525ABED /* ClimateDefaultsSheet.swift */; };
+		A3FBB53249010173B971B948 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */; };
+		B0E3DA4610716895CE021C95 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92354C9835AD3BF83D263E1B /* Theme.swift */; };
+		B400929136E7B068BCB48B7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2CDB0E8452DB6DDBCDBB2A9 /* Assets.xcassets */; };
+		B528B70F8BD81E12B137A21A /* MyNiroWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BE4FA53E10D7DB21BFB78E96 /* MyNiroWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B96D2DEC5BDEB0EB26B0E744 /* BetterBlueKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6542868D65B59E3930EE74F8 /* BetterBlueKit */; };
+		B9CD672CA5BD4DA25358DE43 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D9FE16F3EACB1E4A1E543 /* RootView.swift */; };
+		C06466BEFDA347F43710CB1A /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */; };
+		C29ABBF9E88E5531621B8393 /* AppShortcuts.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7D3CAA70650C0CF5C270140A /* AppShortcuts.xcstrings */; };
+		C7BD90C749AF880EDDDFFD72 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92354C9835AD3BF83D263E1B /* Theme.swift */; };
+		D6A1C60315BC426A7F92B8A3 /* VehicleIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0800F092676AAD4441354CAF /* VehicleIntents.swift */; };
+		DDECCDA3363C519EA0B0B9C9 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */; };
+		E1FB4694034D6AE067DA4CE6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92354C9835AD3BF83D263E1B /* Theme.swift */; };
+		E6D5DA04E2754C0289231BD7 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */; };
+		E8900FD5C68E3647C2FFE2A3 /* BetterBlueKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA27CC0F2F9AE76C5713034E /* BetterBlueKit */; };
+		EC03E6B9FA44411323933070 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */; };
+		EF7F1D89AE4F42608E3E64ED /* SettingsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D0A921C352A7260B5775F8 /* SettingsTabView.swift */; };
+		F9C229877EA7E7D6A3FB81C1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F83C16FBE490E31D693F0D8 /* LoginView.swift */; };
+		FA1DF5DF8E7FC0D660882B5D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4833F20895CA8977B194C1F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF2659E9F8FF35F7BB3FA924 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A440271D08416BF2BA1C507C;
+			remoteInfo = MyNiroWidget;
+		};
+		625BAE515DAEFE33DB7B55CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF2659E9F8FF35F7BB3FA924 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1914B94E67E05483FA196115;
+			remoteInfo = MyNiroWatchWidget;
+		};
+		B28F261EBE628DF3A8924EDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF2659E9F8FF35F7BB3FA924 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC6AF395BA2F924C0AF75D1E;
+			remoteInfo = MyNiroWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C9D28592826EEA98C317935 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5D3867EE9EC36C3B8088A725 /* MyNiroWatchWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		422B49F000A58E4DAAFF43CC /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B528B70F8BD81E12B137A21A /* MyNiroWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54A7BF7FE77BB87B851C7255 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				37B2AAC3D0C8AB5A12D0E7EE /* MyNiroWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStore.swift; sourceTree = "<group>"; };
+		07974D6377669CC6D3B0B6AE /* MyNiroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNiroApp.swift; sourceTree = "<group>"; };
+		0800F092676AAD4441354CAF /* VehicleIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleIntents.swift; sourceTree = "<group>"; };
+		09DCC193303B7DF41AC6CF6B /* CarTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTabView.swift; sourceTree = "<group>"; };
+		0B7705EDF4F51BF56730EE0B /* MyNiroWatchWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyNiroWatchWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B506B3C558C7FDFAF9077C2 /* MyNiroWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNiroWatchApp.swift; sourceTree = "<group>"; };
+		20695EEA5688E75BA5E1B1C0 /* WatchWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWidgets.swift; sourceTree = "<group>"; };
+		228D9FE16F3EACB1E4A1E543 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		35D0A921C352A7260B5775F8 /* SettingsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabView.swift; sourceTree = "<group>"; };
+		35EBCD7A67513F3B7C719575 /* MyNiroWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyNiroWatch.entitlements; sourceTree = "<group>"; };
+		3BCC6F0177A6C2C838C3D35D /* MyNiro.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = MyNiro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		52BBB5E61271F964AF2FB681 /* BetterBlueKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BetterBlueKit; path = Packages/BetterBlueKit; sourceTree = SOURCE_ROOT; };
+		59A83A95856EE0F4E9885EFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6BC73C5A1D2E4314E9EF7AC7 /* MyNiroWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNiroWidgetBundle.swift; sourceTree = "<group>"; };
+		7163588DCF183DC915FF69CF /* MyNiroWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyNiroWidget.entitlements; sourceTree = "<group>"; };
+		7910A8D0BDBC403A3DDE8670 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7D3CAA70650C0CF5C270140A /* AppShortcuts.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = AppShortcuts.xcstrings; sourceTree = "<group>"; };
+		8F83C16FBE490E31D693F0D8 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		92354C9835AD3BF83D263E1B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		9DDEE28AD27C14842EFE950B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BDA5DDEF43E67E48FDA8FDD3 /* MyNiroWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = MyNiroWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4FA53E10D7DB21BFB78E96 /* MyNiroWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNiroWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4B1EDE2AD0368903BE37E50 /* MyNiro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyNiro.entitlements; sourceTree = "<group>"; };
+		CD933ACCAB6AF0D3836454B6 /* MyNiroWatchWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyNiroWatchWidget.entitlements; sourceTree = "<group>"; };
+		ED9E7B542B4736C7B525ABED /* ClimateDefaultsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimateDefaultsSheet.swift; sourceTree = "<group>"; };
+		F118DF413F6757ABD74B1EAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F2CDB0E8452DB6DDBCDBB2A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5DC7DDEDC58B0AFAD189414F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				820E88ABF5C320337C1B2C5C /* BetterBlueKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82794EFC948C87562BC1529C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21C12D3F1BFFD1888BB6874D /* BetterBlueKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95441511067CB1227847FDBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B96D2DEC5BDEB0EB26B0E744 /* BetterBlueKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C2432D873545C601D9DC16B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8900FD5C68E3647C2FFE2A3 /* BetterBlueKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C7E0B13CD72AF7E53AB3931 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */,
+				3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */,
+				9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */,
+				92354C9835AD3BF83D263E1B /* Theme.swift */,
+				0800F092676AAD4441354CAF /* VehicleIntents.swift */,
+				0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		318A6B95A22512AB10054820 /* MyNiroWatch */ = {
+			isa = PBXGroup;
+			children = (
+				F2CDB0E8452DB6DDBCDBB2A9 /* Assets.xcassets */,
+				35EBCD7A67513F3B7C719575 /* MyNiroWatch.entitlements */,
+				1B506B3C558C7FDFAF9077C2 /* MyNiroWatchApp.swift */,
+			);
+			path = MyNiroWatch;
+			sourceTree = "<group>";
+		};
+		5785EA103AA964A4087E5BA1 = {
+			isa = PBXGroup;
+			children = (
+				CCCB03ED7C9089424944AC15 /* MyNiro */,
+				318A6B95A22512AB10054820 /* MyNiroWatch */,
+				FDD09AF40ADC2AF496B7904E /* MyNiroWatchWidget */,
+				E3B661EAA278C43319014AEC /* MyNiroWidget */,
+				9711A40CAD3E081801CCF242 /* Packages */,
+				2C7E0B13CD72AF7E53AB3931 /* Shared */,
+				7D874DF1F0D2DB5885813332 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7D874DF1F0D2DB5885813332 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3BCC6F0177A6C2C838C3D35D /* MyNiro.app */,
+				BE4FA53E10D7DB21BFB78E96 /* MyNiroWatch.app */,
+				0B7705EDF4F51BF56730EE0B /* MyNiroWatchWidget.appex */,
+				BDA5DDEF43E67E48FDA8FDD3 /* MyNiroWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9711A40CAD3E081801CCF242 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				52BBB5E61271F964AF2FB681 /* BetterBlueKit */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		CCCB03ED7C9089424944AC15 /* MyNiro */ = {
+			isa = PBXGroup;
+			children = (
+				7D3CAA70650C0CF5C270140A /* AppShortcuts.xcstrings */,
+				7910A8D0BDBC403A3DDE8670 /* Assets.xcassets */,
+				09DCC193303B7DF41AC6CF6B /* CarTabView.swift */,
+				ED9E7B542B4736C7B525ABED /* ClimateDefaultsSheet.swift */,
+				8F83C16FBE490E31D693F0D8 /* LoginView.swift */,
+				C4B1EDE2AD0368903BE37E50 /* MyNiro.entitlements */,
+				07974D6377669CC6D3B0B6AE /* MyNiroApp.swift */,
+				228D9FE16F3EACB1E4A1E543 /* RootView.swift */,
+				35D0A921C352A7260B5775F8 /* SettingsTabView.swift */,
+			);
+			path = MyNiro;
+			sourceTree = "<group>";
+		};
+		E3B661EAA278C43319014AEC /* MyNiroWidget */ = {
+			isa = PBXGroup;
+			children = (
+				59A83A95856EE0F4E9885EFD /* Assets.xcassets */,
+				F118DF413F6757ABD74B1EAF /* Info.plist */,
+				7163588DCF183DC915FF69CF /* MyNiroWidget.entitlements */,
+				6BC73C5A1D2E4314E9EF7AC7 /* MyNiroWidgetBundle.swift */,
+			);
+			path = MyNiroWidget;
+			sourceTree = "<group>";
+		};
+		FDD09AF40ADC2AF496B7904E /* MyNiroWatchWidget */ = {
+			isa = PBXGroup;
+			children = (
+				9DDEE28AD27C14842EFE950B /* Info.plist */,
+				CD933ACCAB6AF0D3836454B6 /* MyNiroWatchWidget.entitlements */,
+				20695EEA5688E75BA5E1B1C0 /* WatchWidgets.swift */,
+			);
+			path = MyNiroWatchWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1914B94E67E05483FA196115 /* MyNiroWatchWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7432A53BA8B66B1543B603C7 /* Build configuration list for PBXNativeTarget "MyNiroWatchWidget" */;
+			buildPhases = (
+				233213B5C4680263FCDBAC67 /* Sources */,
+				1A9F3211D7660979E0D25660 /* Resources */,
+				82794EFC948C87562BC1529C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyNiroWatchWidget;
+			packageProductDependencies = (
+				21CE6C55A21117872F67D0BC /* BetterBlueKit */,
+			);
+			productName = MyNiroWatchWidget;
+			productReference = 0B7705EDF4F51BF56730EE0B /* MyNiroWatchWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		1BC9541C5EAD893E591FEB5D /* MyNiro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9FC199FDCCD7A4149801F8D /* Build configuration list for PBXNativeTarget "MyNiro" */;
+			buildPhases = (
+				A02B35AA4BDD393FCB42950C /* Sources */,
+				ACC3B581992F2F1CEE3EA951 /* Resources */,
+				9C2432D873545C601D9DC16B /* Frameworks */,
+				54A7BF7FE77BB87B851C7255 /* Embed Foundation Extensions */,
+				422B49F000A58E4DAAFF43CC /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17855E6C6836E5F90F4486FC /* PBXTargetDependency */,
+				5E44DA22CB77104FD65715CB /* PBXTargetDependency */,
+			);
+			name = MyNiro;
+			packageProductDependencies = (
+				BA27CC0F2F9AE76C5713034E /* BetterBlueKit */,
+			);
+			productName = MyNiro;
+			productReference = 3BCC6F0177A6C2C838C3D35D /* MyNiro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A440271D08416BF2BA1C507C /* MyNiroWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B6CAC11A4DD03D6DE225B2C /* Build configuration list for PBXNativeTarget "MyNiroWidget" */;
+			buildPhases = (
+				49A91D4D367415D620E11CB8 /* Sources */,
+				26A81299C4E2441420F946DC /* Resources */,
+				5DC7DDEDC58B0AFAD189414F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyNiroWidget;
+			packageProductDependencies = (
+				F206DE7830153515CAF7B3B8 /* BetterBlueKit */,
+			);
+			productName = MyNiroWidget;
+			productReference = BDA5DDEF43E67E48FDA8FDD3 /* MyNiroWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		EC6AF395BA2F924C0AF75D1E /* MyNiroWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 205A0BA7B0199BAD68D5935B /* Build configuration list for PBXNativeTarget "MyNiroWatch" */;
+			buildPhases = (
+				DBDDE7AAEDA450A0E108396B /* Sources */,
+				41FC85964A98E2659F8BA8F2 /* Resources */,
+				95441511067CB1227847FDBE /* Frameworks */,
+				1C9D28592826EEA98C317935 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5F80FBA070F173BDCC3E9F8 /* PBXTargetDependency */,
+			);
+			name = MyNiroWatch;
+			packageProductDependencies = (
+				6542868D65B59E3930EE74F8 /* BetterBlueKit */,
+			);
+			productName = MyNiroWatch;
+			productReference = BE4FA53E10D7DB21BFB78E96 /* MyNiroWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF2659E9F8FF35F7BB3FA924 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					1914B94E67E05483FA196115 = {
+						DevelopmentTeam = Q7TA9WQ293;
+					};
+					1BC9541C5EAD893E591FEB5D = {
+						DevelopmentTeam = Q7TA9WQ293;
+					};
+					A440271D08416BF2BA1C507C = {
+						DevelopmentTeam = Q7TA9WQ293;
+					};
+					EC6AF395BA2F924C0AF75D1E = {
+						DevelopmentTeam = Q7TA9WQ293;
+					};
+				};
+			};
+			buildConfigurationList = EC330D1F258C30DEFA941BBC /* Build configuration list for PBXProject "MyNiro" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				de,
+				en,
+			);
+			mainGroup = 5785EA103AA964A4087E5BA1;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				31A356DDDE2FBFF1C3E61F78 /* XCLocalSwiftPackageReference "Packages/BetterBlueKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7D874DF1F0D2DB5885813332 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BC9541C5EAD893E591FEB5D /* MyNiro */,
+				A440271D08416BF2BA1C507C /* MyNiroWidget */,
+				EC6AF395BA2F924C0AF75D1E /* MyNiroWatch */,
+				1914B94E67E05483FA196115 /* MyNiroWatchWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A9F3211D7660979E0D25660 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EBA57F92322AD71D090AC42 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26A81299C4E2441420F946DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				264794005786650642479260 /* Assets.xcassets in Resources */,
+				FA1DF5DF8E7FC0D660882B5D /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41FC85964A98E2659F8BA8F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B400929136E7B068BCB48B7B /* Assets.xcassets in Resources */,
+				929B973000C1BACC0D4691C5 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACC3B581992F2F1CEE3EA951 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C29ABBF9E88E5531621B8393 /* AppShortcuts.xcstrings in Resources */,
+				0695086A22035F576B2B117C /* Assets.xcassets in Resources */,
+				EC03E6B9FA44411323933070 /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		233213B5C4680263FCDBAC67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDECCDA3363C519EA0B0B9C9 /* AppGroup.swift in Sources */,
+				41634698C09C75AF3DF00E4D /* KeychainStore.swift in Sources */,
+				C7BD90C749AF880EDDDFFD72 /* Theme.swift in Sources */,
+				809B446FF2313B5534A6D788 /* VehicleIntents.swift in Sources */,
+				6C147295F503F60D268191C3 /* VehicleStore.swift in Sources */,
+				36FD1CAB523DB32EFE3889D6 /* WatchWidgets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49A91D4D367415D620E11CB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3FBB53249010173B971B948 /* AppGroup.swift in Sources */,
+				0AFB3ABBCE8DD08D7AAF9C42 /* KeychainStore.swift in Sources */,
+				4D39B2EEBE11B3A1692914D0 /* MyNiroWidgetBundle.swift in Sources */,
+				E1FB4694034D6AE067DA4CE6 /* Theme.swift in Sources */,
+				782B70B13627F9C7E92F4C80 /* VehicleIntents.swift in Sources */,
+				1838EC15985702C1E724E5E0 /* VehicleStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A02B35AA4BDD393FCB42950C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DA06EFA40E20D46E5063DCF /* AppGroup.swift in Sources */,
+				78486EEA633325194188843E /* CarTabView.swift in Sources */,
+				96429FB24FE2A41A2109944C /* ClimateDefaultsSheet.swift in Sources */,
+				C06466BEFDA347F43710CB1A /* KeychainStore.swift in Sources */,
+				F9C229877EA7E7D6A3FB81C1 /* LoginView.swift in Sources */,
+				68139214B725038C0A752860 /* MyNiroApp.swift in Sources */,
+				B9CD672CA5BD4DA25358DE43 /* RootView.swift in Sources */,
+				EF7F1D89AE4F42608E3E64ED /* SettingsTabView.swift in Sources */,
+				6312D16C14F30F52342B9006 /* Theme.swift in Sources */,
+				8EE22284C80390C14E23C30B /* VehicleIntents.swift in Sources */,
+				12B06A373D875D67FE35C1DB /* VehicleStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBDDE7AAEDA450A0E108396B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6D5DA04E2754C0289231BD7 /* AppGroup.swift in Sources */,
+				563E87C580FD12787D96CA9A /* KeychainStore.swift in Sources */,
+				85C7AD9BD1618295C432ADB7 /* MyNiroWatchApp.swift in Sources */,
+				B0E3DA4610716895CE021C95 /* Theme.swift in Sources */,
+				D6A1C60315BC426A7F92B8A3 /* VehicleIntents.swift in Sources */,
+				5C88F82CBB78984C006F7E1C /* VehicleStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17855E6C6836E5F90F4486FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A440271D08416BF2BA1C507C /* MyNiroWidget */;
+			targetProxy = 4833F20895CA8977B194C1F0 /* PBXContainerItemProxy */;
+		};
+		5E44DA22CB77104FD65715CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC6AF395BA2F924C0AF75D1E /* MyNiroWatch */;
+			targetProxy = B28F261EBE628DF3A8924EDC /* PBXContainerItemProxy */;
+		};
+		F5F80FBA070F173BDCC3E9F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1914B94E67E05483FA196115 /* MyNiroWatchWidget */;
+			targetProxy = 625BAE515DAEFE33DB7B55CE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0855B02C776E8FAEF2E67F5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Q7TA9WQ293;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Release;
+		};
+		2EA213F14D485D9BBA64119E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyNiroWatch/MyNiroWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.holux-design.MyNiro";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Watch";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		424737BEF36C532DBC8C7DB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyNiroWatchWidget/MyNiroWatchWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyNiroWatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Watch.Widget";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Release;
+		};
+		515BBAAD03C56B04FBFC1EF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Q7TA9WQ293;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
+				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		736163D2997CC47B6172C675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyNiroWatch/MyNiroWatch.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.holux-design.MyNiro";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Watch";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		7BB3DCA2E823B0B041765D12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyNiroWatchWidget/MyNiroWatchWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyNiroWatchWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Watch.Widget";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+			};
+			name = Debug;
+		};
+		B6907134310F31A81922830E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyNiroWidget/MyNiroWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyNiroWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Widget";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C542636E7637EEE8255D4BE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyNiro/MyNiro.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D56AED4F14DFA66B51D85349 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MyNiroWidget/MyNiroWidget.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyNiroWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Widget";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FBFCBF380C49E5104A6F52C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyNiro/MyNiro.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0B6CAC11A4DD03D6DE225B2C /* Build configuration list for PBXNativeTarget "MyNiroWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D56AED4F14DFA66B51D85349 /* Debug */,
+				B6907134310F31A81922830E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		205A0BA7B0199BAD68D5935B /* Build configuration list for PBXNativeTarget "MyNiroWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				736163D2997CC47B6172C675 /* Debug */,
+				2EA213F14D485D9BBA64119E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7432A53BA8B66B1543B603C7 /* Build configuration list for PBXNativeTarget "MyNiroWatchWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BB3DCA2E823B0B041765D12 /* Debug */,
+				424737BEF36C532DBC8C7DB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E9FC199FDCCD7A4149801F8D /* Build configuration list for PBXNativeTarget "MyNiro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C542636E7637EEE8255D4BE1 /* Debug */,
+				FBFCBF380C49E5104A6F52C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EC330D1F258C30DEFA941BBC /* Build configuration list for PBXProject "MyNiro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				515BBAAD03C56B04FBFC1EF5 /* Debug */,
+				0855B02C776E8FAEF2E67F5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		31A356DDDE2FBFF1C3E61F78 /* XCLocalSwiftPackageReference "Packages/BetterBlueKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/BetterBlueKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		21CE6C55A21117872F67D0BC /* BetterBlueKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BetterBlueKit;
+		};
+		6542868D65B59E3930EE74F8 /* BetterBlueKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BetterBlueKit;
+		};
+		BA27CC0F2F9AE76C5713034E /* BetterBlueKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BetterBlueKit;
+		};
+		F206DE7830153515CAF7B3B8 /* BetterBlueKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BetterBlueKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = EF2659E9F8FF35F7BB3FA924 /* Project object */;
+}

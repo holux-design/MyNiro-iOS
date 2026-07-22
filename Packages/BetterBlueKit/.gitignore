@@ -1,0 +1,21 @@
+# Swift Package Manager
+.build/
+Packages/
+Package.pins
+Package.resolved
+*.xcworkspace
+
+# Xcode
+*.xcuserstate
+*.xcuserdatad/
+DerivedData/
+build/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# SwiftLint config is checked in (see .swiftlint.yml) so contributors
+# share the same lint rules.

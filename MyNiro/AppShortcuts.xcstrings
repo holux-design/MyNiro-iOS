@@ -1,0 +1,204 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Charge with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lade mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Climate with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klima mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Cool my car with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kühle mein Auto mit ${applicationName} vor"
+          }
+        }
+      }
+    },
+    "Lock my car with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verriegle mein Auto mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Lock the car with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verriegle das Auto mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Open my car with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffne mein Auto mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Pre-cool my car with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kühle das Auto mit ${applicationName} vor"
+          }
+        }
+      }
+    },
+    "Preheat my car with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heize das Auto mit ${applicationName} vor"
+          }
+        }
+      }
+    },
+    "Start charging with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starte das Laden mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Start climate with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starte die Klimaanlage mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Stop climate with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stoppe die Klimaanlage mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Toggle charge with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laden umschalten mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Toggle climate with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klima umschalten mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Toggle lock with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verriegelung umschalten mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Unlock ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entsperre ${applicationName}"
+          }
+        }
+      }
+    },
+    "Unlock my car with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entsperre mein Auto mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Unlock the car with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entsperre das Auto mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Warm my car with ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heize mein Auto mit ${applicationName} vor"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

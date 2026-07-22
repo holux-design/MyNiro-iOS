@@ -1,0 +1,508 @@
+//
+//  APIClientRedactionTests.swift
+//  BetterBlueKit
+//
+//  Tests for SensitiveDataRedactor functionality
+//
+
+import Foundation
+import Testing
+@testable import BetterBlueKit
+
+@Suite("Sensitive Data Redaction Tests")
+struct APIClientRedactionTests {
+
+    // MARK: - redact Tests
+
+    @Test("redact with nil input")
+    func testRedactSensitiveDataWithNil() {
+        let result = SensitiveDataRedactor.redact(nil)
+        #expect(result == nil)
+    }
+
+    @Test("redact with password fields")
+    func testRedactSensitiveDataWithPasswords() {
+        let input = """
+        {
+            "password": "secret123",
+            "PIN": "1234",
+            "pin": "5678",
+            "other_field": "normal_value"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        // Check that sensitive data is redacted
+        #expect(result.contains("[REDACTED]"))
+        #expect(result.contains("normal_value"))
+        #expect(!result.contains("secret123"))
+    }
+
+    @Test("redact with Bearer tokens")
+    func testRedactSensitiveDataWithBearerTokens() {
+        let input = "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test.token"
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(result.contains("Bearer [REDACTED]"))
+        #expect(!result.contains("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test.token"))
+    }
+
+    @Test("redact with access and refresh tokens")
+    func testRedactSensitiveDataWithTokens() {
+        let input = """
+        {
+            "access_token": "abc123def456",
+            "refresh_token": "xyz789uvw012",
+            "accessToken": "token123",
+            "refreshToken": "refresh456"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        // Check that the tokens are redacted
+        #expect(result.contains("[REDACTED]"))
+        #expect(!result.contains("abc123def456"))
+        #expect(!result.contains("xyz789uvw012"))
+        #expect(!result.contains("token123"))
+        #expect(!result.contains("refresh456"))
+    }
+
+    @Test("redact with location coordinates")
+    func testRedactSensitiveDataWithCoordinates() {
+        let input = """
+        {
+            "latitude": 37.7749,
+            "longitude": -122.4194,
+            "lat": 40.7128,
+            "lng": -74.0060,
+            "lon": -0.1278
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        // Check that coordinates are redacted
+        #expect(result.contains("[REDACTED]"))
+        #expect(!result.contains("37.7749"))
+        #expect(!result.contains("-122.4194"))
+        #expect(!result.contains("40.7128"))
+        #expect(!result.contains("-74.0060"))
+    }
+
+    @Test("redact with coordinate pairs")
+    func testRedactSensitiveDataWithCoordinatePairs() {
+        let input = "Location: 37.7749, -122.4194 and another location: 40.7128, -74.0060"
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(result.contains("[LOCATION_REDACTED]"))
+        #expect(!result.contains("37.7749, -122.4194"))
+        #expect(!result.contains("40.7128, -74.0060"))
+    }
+
+    @Test("redact preserves non-sensitive data")
+    func testRedactSensitiveDataPreservesNormalData() {
+        let input = """
+        {
+            "vehicle_id": "VIN123456789",
+            "status": "locked",
+            "battery_level": 85
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(result.contains("VIN123456789"))
+        #expect(result.contains("locked"))
+        #expect(result.contains("85"))
+    }
+
+    @Test("redact with mixed sensitive and normal data")
+    func testRedactSensitiveDataMixed() {
+        let input = """
+        {
+            "vehicle_status": "unlocked",
+            "password": "secret123",
+            "latitude": 37.7749,
+            "access_token": "token123"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        // Should redact sensitive data
+        #expect(result.contains("[REDACTED]"))
+
+        // Should preserve normal data
+        #expect(result.contains("unlocked"))
+
+        // Should not contain original sensitive values
+        #expect(!result.contains("secret123"))
+        #expect(!result.contains("37.7749"))
+        #expect(!result.contains("token123"))
+    }
+
+    // MARK: - redactHeaders Tests
+
+    @Test("redactHeaders with Authorization header")
+    func testRedactSensitiveHeadersWithAuthorization() {
+        let headers = [
+            "Authorization": "Bearer secret_token_123",
+            "Content-Type": "application/json"
+        ]
+
+        let result = SensitiveDataRedactor.redactHeaders(headers)
+
+        #expect(result["Authorization"] == "Bearer [REDACTED]")
+        #expect(result["Content-Type"] == "application/json")
+    }
+
+    @Test("redactHeaders with lowercase authorization header")
+    func testRedactSensitiveHeadersWithLowercaseAuth() {
+        let headers = [
+            "authorization": "Bearer another_secret_token",
+            "user-agent": "BetterBlueKit/1.0"
+        ]
+
+        let result = SensitiveDataRedactor.redactHeaders(headers)
+
+        #expect(result["authorization"] == "Bearer [REDACTED]")
+        #expect(result["user-agent"] == "BetterBlueKit/1.0")
+    }
+
+    @Test("redactHeaders with auth-related headers")
+    func testRedactSensitiveHeadersWithAuthRelated() {
+        let headers = [
+            "X-Auth-Token": "secret123",
+            "Access-Token": "token789",
+            "Content-Type": "application/json"
+        ]
+
+        let result = SensitiveDataRedactor.redactHeaders(headers)
+
+        #expect(result["X-Auth-Token"] == "[REDACTED]")
+        #expect(result["Access-Token"] == "[REDACTED]")
+        #expect(result["Content-Type"] == "application/json")
+    }
+
+    @Test("redactHeaders with token-related headers")
+    func testRedactSensitiveHeadersWithTokenRelated() {
+        let headers = [
+            "X-Token": "another_token",
+            "Bearer-Token": "bearer_token",
+            "Accept": "application/json"
+        ]
+
+        let result = SensitiveDataRedactor.redactHeaders(headers)
+
+        #expect(result["X-Token"] == "[REDACTED]")
+        #expect(result["Bearer-Token"] == "[REDACTED]")
+        #expect(result["Accept"] == "application/json")
+    }
+
+    @Test("redactHeaders preserves non-sensitive headers")
+    func testRedactSensitiveHeadersPreservesNormalHeaders() {
+        let headers = [
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "User-Agent": "BetterBlueKit/1.0",
+            "X-Request-ID": "123456789"
+        ]
+
+        let result = SensitiveDataRedactor.redactHeaders(headers)
+
+        #expect(result == headers) // Should be unchanged
+    }
+
+    @Test("redactHeaders with Canada cookie and transaction headers")
+    func testRedactSensitiveHeadersWithCanadaHeaders() {
+        let headers = [
+            "Cookie": "__cf_bm=secret_cookie",
+            "TransactionId": "txn-12345",
+            "Pauth": "pauth-secret",
+            "Accesstoken": "access-secret",
+            "Content-Type": "application/json"
+        ]
+
+        let result = SensitiveDataRedactor.redactHeaders(headers)
+        #expect(result["Cookie"] == "[REDACTED]")
+        #expect(result["TransactionId"] == "[REDACTED]")
+        #expect(result["Pauth"] == "[REDACTED]")
+        #expect(result["Accesstoken"] == "[REDACTED]")
+        #expect(result["Content-Type"] == "application/json")
+    }
+
+    @Test("redactHeaders with secretkey header")
+    func testRedactSensitiveHeadersWithSecretKey() {
+        let headers = [
+            "secretkey": "sydnat-9kykci-Kuhtep-h5nK",
+            "Content-Type": "application/json"
+        ]
+
+        let result = SensitiveDataRedactor.redactHeaders(headers)
+
+        #expect(result["secretkey"] == "[REDACTED]")
+        #expect(result["Content-Type"] == "application/json")
+    }
+
+    @Test("redactHeaders with empty headers")
+    func testRedactSensitiveHeadersWithEmptyHeaders() {
+        let headers: [String: String] = [:]
+        let result = SensitiveDataRedactor.redactHeaders(headers)
+
+        #expect(result.isEmpty)
+    }
+
+    // MARK: - Edge Cases
+
+    @Test("redact with empty string")
+    func testRedactSensitiveDataWithEmptyString() {
+        let result = SensitiveDataRedactor.redact("")
+        #expect(result == "")
+    }
+
+    @Test("redact with malformed JSON")
+    func testRedactSensitiveDataWithMalformedJSON() {
+        let input = "{ password: secret123, malformed json"
+        let result = SensitiveDataRedactor.redact(input)!
+
+        // The regex might not work on malformed JSON, so we can't guarantee redaction
+        // Just check that the function doesn't crash
+        #expect(result.count > 0)
+    }
+
+    @Test("redact with nested coordinates")
+    func testRedactSensitiveDataWithNestedCoordinates() {
+        let input = """
+        {
+            "location": {
+                "coordinates": {
+                    "latitude": 37.7749,
+                    "longitude": -122.4194
+                }
+            }
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(result.contains("[REDACTED]"))
+        #expect(!result.contains("37.7749"))
+        #expect(!result.contains("-122.4194"))
+    }
+
+    @Test("redact VIN numbers")
+    func testRedactVINNumbers() {
+        let input = """
+        {
+            "vin": "KMHJ3314HMU000001",
+            "VIN": "5YJXCBE29KF000002"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        // VINs should be partially redacted (first 3 and last 4 chars preserved)
+        #expect(result.contains("KMH**********0001"))
+        #expect(result.contains("5YJ**********0002"))
+        #expect(!result.contains("KMHJ3314HMU000001"))
+        #expect(!result.contains("5YJXCBE29KF000002"))
+    }
+
+    @Test("redact phone numbers")
+    func testRedactPhoneNumbers() {
+        let input = """
+        {
+            "phone": "555-123-4567",
+            "phoneNumber": "+1 (555) 123-4567",
+            "mobileNumber": "5551234567",
+            "cellPhone": "555.123.4567",
+            "telematicsPhoneNumber": "6309152282",
+            "number": "6309152282"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(!result.contains("555-123-4567"))
+        #expect(!result.contains("+1 (555) 123-4567"))
+        #expect(!result.contains("5551234567"))
+        #expect(!result.contains("555.123.4567"))
+        #expect(!result.contains("6309152282"))
+    }
+
+    @Test("redact account and user IDs")
+    func testRedactAccountAndUserIds() {
+        let input = """
+        {
+            "accountId": "550e8400-e29b-41d4-a716-446655440000",
+            "userId": "user@example.com",
+            "memberId": "MBR123456789",
+            "idmId": "PG1X67TL",
+            "billingAccountNumber": "A01134796",
+            "enrollmentId": "5025321",
+            "nadid": "5235406651",
+            "deviceKey": "B8DEC340-3543-4042-A4AD-9168823C67FA",
+            "deviceid": "B8DEC340-3543-4042-A4AD-9168823C67FA",
+            "clientuuid": "ba6c488d-78fb-5c40-9699-47fa624d06e7"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(!result.contains("550e8400-e29b-41d4-a716-446655440000"))
+        #expect(!result.contains("user@example.com"))
+        #expect(!result.contains("MBR123456789"))
+        #expect(!result.contains("PG1X67TL"))
+        #expect(!result.contains("A01134796"))
+        #expect(!result.contains("5025321"))
+        #expect(!result.contains("5235406651"))
+        #expect(!result.contains("B8DEC340-3543-4042-A4AD-9168823C67FA"))
+        #expect(!result.contains("ba6c488d-78fb-5c40-9699-47fa624d06e7"))
+    }
+
+    @Test("redact first and last names")
+    func testRedactNames() {
+        let input = """
+        {
+            "firstName": "Mark",
+            "lastName": "Schmidt"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(!result.contains("Mark"))
+        #expect(!result.contains("Schmidt"))
+        #expect(result.contains("[REDACTED]"))
+    }
+
+    @Test("redact emails in additional key formats")
+    func testRedactEmailsInAdditionalKeys() {
+        let input = """
+        {
+            "loginId": "user@example.com",
+            "notificationEmail": "user@example.com"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(!result.contains("user@example.com"))
+    }
+
+    @Test("redact emails in URL paths")
+    func testRedactEmailsInURLPaths() {
+        let input = """
+        "url": "https://api.example.com/enrollment/details/user@example.com"
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(!result.contains("user@example.com"))
+        #expect(result.contains("[EMAIL_REDACTED]"))
+    }
+
+    @Test("redact physical address fields")
+    func testRedactAddressFields() {
+        let input = """
+        {
+            "street": "915 Long Drive",
+            "postalCode": "62305"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(!result.contains("915 Long Drive"))
+        #expect(!result.contains("62305"))
+    }
+
+    @Test("redact regId")
+    func testRedactRegId() {
+        let input = """
+        {
+            "regId": "ABC123456789",
+            "regID": "XYZ987654321",
+            "regid": "H00005447630VKM8KR4AE8PU232649"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(result.contains("[REDACTED]"))
+        #expect(!result.contains("ABC123456789"))
+        #expect(!result.contains("XYZ987654321"))
+        #expect(!result.contains("H00005447630VKM8KR4AE8PU232649"))
+    }
+
+    @Test("redact rememberMeToken")
+    func testRedactRememberMeToken() {
+        let input = """
+        {
+            "rememberMeToken": "some_long_token_value_here"
+        }
+        """
+
+        let result = SensitiveDataRedactor.redact(input)!
+
+        #expect(result.contains("[REDACTED]"))
+        #expect(!result.contains("some_long_token_value_here"))
+    }
+}
+
+@Suite("APIClientBase Redaction Tests")
+struct APIClientBaseRedactionTests {
+
+    @MainActor
+    @Test("APIClientBase redacts Hyundai Canada sensitive headers")
+    func testAPIClientBaseRedactsCanadaSensitiveHeaders() {
+        let client = makeCanadaClient()
+        let headers = [
+            "client_secret": "CLISCR01AHSPA",
+            "Pauth": "pauth-secret",
+            "TransactionId": "txn-12345",
+            "Accesstoken": "access-secret",
+            "Content-Type": "application/json"
+        ]
+
+        let result = client.redactSensitiveHeaders(headers)
+
+        #expect(result["client_secret"] == "[REDACTED]")
+        #expect(result["Pauth"] == "[REDACTED]")
+        #expect(result["TransactionId"] == "[REDACTED]")
+        #expect(result["Accesstoken"] == "[REDACTED]")
+        #expect(result["Content-Type"] == "application/json")
+    }
+
+    @MainActor
+    @Test("APIClientBase redacts camelCase token fields in body")
+    func testAPIClientBaseRedactsCamelCaseTokens() {
+        let client = makeCanadaClient()
+        let body = """
+        {"accessToken":"access-token-value","refreshToken":"refresh-token-value","vehicleId":"abc123"}
+        """
+
+        let result = client.redactSensitiveData(in: body)
+
+        #expect(result?.contains(#""accessToken":"[REDACTED]""#) == true)
+        #expect(result?.contains(#""refreshToken":"[REDACTED]""#) == true)
+        #expect(result?.contains("access-token-value") == false)
+        #expect(result?.contains("refresh-token-value") == false)
+        #expect(result?.contains(#""vehicleId":"abc123""#) == true)
+    }
+
+    @MainActor
+    private func makeCanadaClient() -> HyundaiCanadaAPIClient {
+        let config = APIClientConfiguration(
+            region: .canada,
+            brand: .hyundai,
+            username: "test@example.com",
+            password: "password123",
+            pin: "1234",
+            accountId: UUID()
+        )
+        return HyundaiCanadaAPIClient(configuration: config)
+    }
+}
