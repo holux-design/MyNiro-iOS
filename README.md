@@ -12,6 +12,12 @@ Personal Kia Connect (Europe) companion for iOS — charging, climate, unlock, w
 > their respective owners. Use at your own risk and in accordance with your Kia
 > Connect account terms.
 
+## Screenshots
+
+| Car tab | Home Screen widget |
+| :---: | :---: |
+| <img src="docs/screenshots/app-car-tab.png" alt="MyNiro car tab showing battery, charging, lock, and climate" width="280" /> | <img src="docs/screenshots/widget-home-screen.png" alt="MyNiro home screen widget with battery, range, and quick actions" width="280" /> |
+
 ## Open in Xcode
 
 ```bash
