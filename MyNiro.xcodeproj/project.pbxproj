@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		0695086A22035F576B2B117C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7910A8D0BDBC403A3DDE8670 /* Assets.xcassets */; };
 		0AFB3ABBCE8DD08D7AAF9C42 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */; };
+		0E1A2B3C4D5E6F708192A3B4 /* PhoneWatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* PhoneWatchSync.swift */; };
 		12B06A373D875D67FE35C1DB /* VehicleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */; };
 		1838EC15985702C1E724E5E0 /* VehicleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */; };
+		1F2E3D4C5B6A798867554433 /* PhoneWatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* PhoneWatchSync.swift */; };
 		21C12D3F1BFFD1888BB6874D /* BetterBlueKit in Frameworks */ = {isa = PBXBuildFile; productRef = 21CE6C55A21117872F67D0BC /* BetterBlueKit */; };
 		264794005786650642479260 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59A83A95856EE0F4E9885EFD /* Assets.xcassets */; };
+		2A3B4C5D6E7F8091A2B3C4D5 /* PhoneWatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* PhoneWatchSync.swift */; };
 		36FD1CAB523DB32EFE3889D6 /* WatchWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20695EEA5688E75BA5E1B1C0 /* WatchWidgets.swift */; };
 		37B2AAC3D0C8AB5A12D0E7EE /* MyNiroWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = BDA5DDEF43E67E48FDA8FDD3 /* MyNiroWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3DA06EFA40E20D46E5063DCF /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */; };
+		3E4F5A6B7C8D9E0F1A2B3C4D /* PhoneWatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* PhoneWatchSync.swift */; };
 		41634698C09C75AF3DF00E4D /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */; };
 		4D39B2EEBE11B3A1692914D0 /* MyNiroWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC73C5A1D2E4314E9EF7AC7 /* MyNiroWidgetBundle.swift */; };
 		4EBA57F92322AD71D090AC42 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */; };
@@ -115,6 +119,7 @@
 
 /* Begin PBXFileReference section */
 		0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleStore.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60718293A4B5C /* PhoneWatchSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWatchSync.swift; sourceTree = "<group>"; };
 		07974D6377669CC6D3B0B6AE /* MyNiroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNiroApp.swift; sourceTree = "<group>"; };
 		0800F092676AAD4441354CAF /* VehicleIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleIntents.swift; sourceTree = "<group>"; };
 		09DCC193303B7DF41AC6CF6B /* CarTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTabView.swift; sourceTree = "<group>"; };
@@ -188,6 +193,7 @@
 				FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */,
 				3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */,
 				9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */,
+				A1B2C3D4E5F60718293A4B5C /* PhoneWatchSync.swift */,
 				92354C9835AD3BF83D263E1B /* Theme.swift */,
 				0800F092676AAD4441354CAF /* VehicleIntents.swift */,
 				0241755CAD07FB1E312BC3C8 /* VehicleStore.swift */,
@@ -458,6 +464,7 @@
 			files = (
 				DDECCDA3363C519EA0B0B9C9 /* AppGroup.swift in Sources */,
 				41634698C09C75AF3DF00E4D /* KeychainStore.swift in Sources */,
+				0E1A2B3C4D5E6F708192A3B4 /* PhoneWatchSync.swift in Sources */,
 				C7BD90C749AF880EDDDFFD72 /* Theme.swift in Sources */,
 				809B446FF2313B5534A6D788 /* VehicleIntents.swift in Sources */,
 				6C147295F503F60D268191C3 /* VehicleStore.swift in Sources */,
@@ -472,6 +479,7 @@
 				A3FBB53249010173B971B948 /* AppGroup.swift in Sources */,
 				0AFB3ABBCE8DD08D7AAF9C42 /* KeychainStore.swift in Sources */,
 				4D39B2EEBE11B3A1692914D0 /* MyNiroWidgetBundle.swift in Sources */,
+				1F2E3D4C5B6A798867554433 /* PhoneWatchSync.swift in Sources */,
 				E1FB4694034D6AE067DA4CE6 /* Theme.swift in Sources */,
 				782B70B13627F9C7E92F4C80 /* VehicleIntents.swift in Sources */,
 				1838EC15985702C1E724E5E0 /* VehicleStore.swift in Sources */,
@@ -488,6 +496,7 @@
 				C06466BEFDA347F43710CB1A /* KeychainStore.swift in Sources */,
 				F9C229877EA7E7D6A3FB81C1 /* LoginView.swift in Sources */,
 				68139214B725038C0A752860 /* MyNiroApp.swift in Sources */,
+				2A3B4C5D6E7F8091A2B3C4D5 /* PhoneWatchSync.swift in Sources */,
 				B9CD672CA5BD4DA25358DE43 /* RootView.swift in Sources */,
 				EF7F1D89AE4F42608E3E64ED /* SettingsTabView.swift in Sources */,
 				6312D16C14F30F52342B9006 /* Theme.swift in Sources */,
@@ -503,6 +512,7 @@
 				E6D5DA04E2754C0289231BD7 /* AppGroup.swift in Sources */,
 				563E87C580FD12787D96CA9A /* KeychainStore.swift in Sources */,
 				85C7AD9BD1618295C432ADB7 /* MyNiroWatchApp.swift in Sources */,
+				3E4F5A6B7C8D9E0F1A2B3C4D /* PhoneWatchSync.swift in Sources */,
 				B0E3DA4610716895CE021C95 /* Theme.swift in Sources */,
 				D6A1C60315BC426A7F92B8A3 /* VehicleIntents.swift in Sources */,
 				5C88F82CBB78984C006F7E1C /* VehicleStore.swift in Sources */,
@@ -597,6 +607,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyNiroWatch/MyNiroWatch.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyNiroWatch/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.holux-design.MyNiro";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -699,6 +710,7 @@
 				CODE_SIGN_ENTITLEMENTS = MyNiroWatch/MyNiroWatch.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyNiroWatch/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.holux-design.MyNiro";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;

@@ -119,6 +119,7 @@ final class VehicleStore {
         self.pin = pin
         self.accountId = accountId
         isLoggedIn = true
+        syncSessionToWatch()
 
         Task { await loginAndRefresh(forceVehiclePoll: false) }
     }
@@ -135,12 +136,76 @@ final class VehicleStore {
         KeychainStore.set(pin, for: .pin)
         KeychainStore.set(accountId.uuidString, for: .accountId)
         KeychainStore.set(refreshToken, for: .refreshToken)
-        // Mirror into App Group so Watch / widgets can authenticate.
+        // Mirror into App Group so same-device widgets can authenticate.
         AppGroup.defaults.set(email, forKey: "email")
         AppGroup.defaults.set(password, forKey: "password")
         AppGroup.defaults.set(pin, forKey: "pin")
         AppGroup.defaults.set(accountId.uuidString, forKey: "accountId")
         AppGroup.defaults.set(refreshToken, forKey: "refreshToken")
+        syncSessionToWatch()
+    }
+
+    /// iPhone → Watch via WatchConnectivity (App Groups do not cross devices).
+    func syncSessionToWatch() {
+        #if os(iOS)
+        guard isLoggedIn else {
+            PhoneWatchSync.shared.pushLoggedOut()
+            return
+        }
+        PhoneWatchSync.shared.pushSession(
+            email: email,
+            password: password,
+            pin: pin,
+            accountId: accountId,
+            refreshToken: KeychainStore.get(.refreshToken) ?? AppGroup.defaults.string(forKey: "refreshToken"),
+            snapshot: snapshot
+        )
+        #endif
+    }
+
+    /// Watch receives credentials pushed from the iPhone companion.
+    func applyWatchConnectivityContext(_ context: [String: Any]) {
+        #if os(watchOS)
+        if let loggedIn = context["loggedIn"] as? Bool, loggedIn == false {
+            logout()
+            return
+        }
+        guard
+            let email = context["email"] as? String,
+            let password = context["password"] as? String,
+            let accountIdString = context["accountId"] as? String,
+            let accountId = UUID(uuidString: accountIdString)
+        else { return }
+
+        let pin = context["pin"] as? String ?? ""
+        let refreshToken = context["refreshToken"] as? String ?? ""
+
+        self.email = email
+        self.password = password
+        self.pin = pin
+        self.accountId = accountId
+        KeychainStore.set(email, for: .email)
+        KeychainStore.set(password, for: .password)
+        KeychainStore.set(pin, for: .pin)
+        KeychainStore.set(accountIdString, for: .accountId)
+        if !refreshToken.isEmpty {
+            KeychainStore.set(refreshToken, for: .refreshToken)
+            AppGroup.defaults.set(refreshToken, forKey: "refreshToken")
+        }
+        AppGroup.defaults.set(email, forKey: "email")
+        AppGroup.defaults.set(password, forKey: "password")
+        AppGroup.defaults.set(pin, forKey: "pin")
+        AppGroup.defaults.set(accountIdString, forKey: "accountId")
+
+        if let data = context["snapshot"] as? Data,
+           let snap = try? JSONDecoder().decode(CachedVehicleSnapshot.self, from: data) {
+            snap.save()
+            snapshot = snap
+        }
+
+        isLoggedIn = true
+        Task { await loginAndRefresh(forceVehiclePoll: false) }
+        #endif
     }
 
     func login(email: String, password: String, pin: String) async {
@@ -195,6 +260,9 @@ final class VehicleStore {
         snapshot = nil
         optimisticLocked = nil
         optimisticCharging = nil
+        #if os(iOS)
+        PhoneWatchSync.shared.pushLoggedOut()
+        #endif
         reloadWidgets()
     }
 
@@ -540,6 +608,7 @@ final class VehicleStore {
         )
         snapshot = snap
         snap.save()
+        syncSessionToWatch()
     }
 
     private func showToast(_ message: String) {

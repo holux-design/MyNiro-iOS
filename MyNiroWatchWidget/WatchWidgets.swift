@@ -12,6 +12,10 @@ struct MyNiroWatchWidgetBundle: WidgetBundle {
 
 // MARK: - Unlock (circular tap target)
 
+enum WatchDeepLink {
+    static let unlock = URL(string: "myniro://unlock")!
+}
+
 struct UnlockComplication: Widget {
     let kind = "UnlockComplication"
 
@@ -42,15 +46,15 @@ struct SimpleEntry: TimelineEntry {
 
 struct UnlockComplicationView: View {
     var body: some View {
-        Button(intent: UnlockVehicleIntent()) {
-            ZStack {
-                AccessoryWidgetBackground()
-                Image(systemName: "lock.open.fill")
-                    .font(.system(size: 18, weight: .semibold))
-                    .widgetAccentable()
-            }
+        // Watch-face complications often ignore Button(intent:) and only open the app.
+        // widgetURL → app handles unlock immediately on launch.
+        ZStack {
+            AccessoryWidgetBackground()
+            Image(systemName: "lock.open.fill")
+                .font(.system(size: 18, weight: .semibold))
+                .widgetAccentable()
         }
-        .buttonStyle(.plain)
+        .widgetURL(WatchDeepLink.unlock)
     }
 }
 

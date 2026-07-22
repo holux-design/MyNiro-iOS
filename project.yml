@@ -98,6 +98,7 @@ targets:
         INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp: YES
         CODE_SIGN_ENTITLEMENTS: MyNiroWatch/MyNiroWatch.entitlements
         GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: MyNiroWatch/Info.plist
         MARKETING_VERSION: "1.0"
         CURRENT_PROJECT_VERSION: "1"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
@@ -112,6 +113,13 @@ targets:
       properties:
         com.apple.security.application-groups:
           - group.com.holux-design.MyNiro
+    info:
+      path: MyNiroWatch/Info.plist
+      properties:
+        CFBundleURLTypes:
+          - CFBundleURLName: com.holux-design.MyNiro.Watch
+            CFBundleURLSchemes:
+              - myniro
 
   MyNiroWatchWidget:
     type: app-extension

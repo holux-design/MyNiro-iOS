@@ -2,11 +2,33 @@ import SwiftUI
 
 @main
 struct MyNiroWatchApp: App {
+    @Environment(\.scenePhase) private var scenePhase
     @State private var store = VehicleStore.shared
 
     var body: some Scene {
         WindowGroup {
             WatchRootView(store: store)
+                .onAppear {
+                    PhoneWatchSync.shared.activate()
+                }
+                .onChange(of: scenePhase) { _, phase in
+                    if phase == .active {
+                        PhoneWatchSync.shared.activate()
+                    }
+                }
+                .onOpenURL { url in
+                    handleDeepLink(url)
+                }
+        }
+    }
+
+    private func handleDeepLink(_ url: URL) {
+        guard url.scheme == "myniro" else { return }
+        switch url.host {
+        case "unlock":
+            Task { await store.unlock() }
+        default:
+            break
         }
     }
 }
@@ -28,6 +50,11 @@ struct WatchRootView: View {
                         }
                         .padding(.vertical, 8)
 
+                        if store.isCommandPending, store.pendingAction == .lock {
+                            ProgressView(String(localized: "Unlocking…"))
+                                .tint(MyNiroTheme.green)
+                        }
+
                         Button {
                             Task { await store.unlock() }
                         } label: {
@@ -35,6 +62,7 @@ struct WatchRootView: View {
                                 .frame(maxWidth: .infinity)
                         }
                         .tint(MyNiroTheme.green)
+                        .disabled(store.isBusy)
 
                         Button {
                             Task { await store.toggleClimate() }
@@ -47,12 +75,24 @@ struct WatchRootView: View {
                             )
                             .frame(maxWidth: .infinity)
                         }
+                        .disabled(store.isBusy)
 
                         Button {
                             Task { await store.refresh(force: true) }
                         } label: {
                             Label(String(localized: "Refresh"), systemImage: "arrow.clockwise")
                                 .frame(maxWidth: .infinity)
+                        }
+                        .disabled(store.isBusy)
+
+                        if let toast = store.toastMessage {
+                            Text(toast)
+                                .font(.caption)
+                                .foregroundStyle(MyNiroTheme.green)
+                        } else if let error = store.errorMessage {
+                            Text(error)
+                                .font(.caption)
+                                .foregroundStyle(.red)
                         }
                     }
                 }
