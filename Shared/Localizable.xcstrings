@@ -741,6 +741,46 @@
         }
       }
     },
+    "Pre-cool" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorkühlen"
+          }
+        }
+      }
+    },
+    "Pre-cool sent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorkühlen gesendet"
+          }
+        }
+      }
+    },
+    "Pre-heat" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorheizen"
+          }
+        }
+      }
+    },
+    "Pre-heat sent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorheizen gesendet"
+          }
+        }
+      }
+    },
     "Refresh" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -905,13 +945,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sage „Hey Siri, heize das Auto mit MyNiro vor“ oder füge Kurzbefehle in der Kurzbefehle-App hinzu."
+            "value" : "Sage „Hey Siri, heize das Auto mit MyNiro vor“ oder „kühle das Auto mit MyNiro vor“ — oder füge Kurzbefehle in der Kurzbefehle-App hinzu."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Say \"Hey Siri, preheat my car with MyNiro\" or add shortcuts in the Shortcuts app."
+            "value" : "Say \"Hey Siri, preheat my car with MyNiro\" or \"pre-cool my car with MyNiro\" — or add shortcuts in the Shortcuts app."
           }
         }
       }
@@ -1178,6 +1218,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Klima umschalten"
+          }
+        }
+      }
+    },
+    "Toggle climate at 17°C" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klima bei 17°C umschalten"
+          }
+        }
+      }
+    },
+    "Toggle climate at 22°C" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klima bei 22°C umschalten"
           }
         }
       }

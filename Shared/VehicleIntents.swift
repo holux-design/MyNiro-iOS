@@ -9,6 +9,12 @@ struct UnlockVehicleIntent: AppIntent {
     @MainActor
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let store = VehicleStore.shared
+        if !store.isLoggedIn {
+            store.restoreSession()
+        }
+        guard store.isLoggedIn else {
+            return .result(dialog: IntentDialog(LocalizedStringResource("Sign in on iPhone first, then open MyNiro once")))
+        }
         let ok = await store.unlock()
         WidgetCenter.shared.reloadAllTimelines()
         if ok {
@@ -49,6 +55,52 @@ struct StartClimateIntent: AppIntent {
             return .result(dialog: IntentDialog(LocalizedStringResource("Climate start sent")))
         }
         return .result(dialog: IntentDialog(stringLiteral: store.errorMessage ?? String(localized: "Climate start failed")))
+    }
+}
+
+struct PreHeatClimateIntent: AppIntent {
+    static var title: LocalizedStringResource = "Pre-heat"
+    static var description = IntentDescription("Toggle climate at 22°C")
+    static var openAppWhenRun = false
+
+    private static let temperatureC: Double = 22
+
+    @MainActor
+    func perform() async throws -> some IntentResult & ProvidesDialog {
+        let store = VehicleStore.shared
+        let stopping = store.climateOn
+        let ok = await store.toggleClimate(temperatureC: Self.temperatureC)
+        WidgetCenter.shared.reloadAllTimelines()
+        if ok {
+            let message = stopping
+                ? LocalizedStringResource("Climate stop sent")
+                : LocalizedStringResource("Pre-heat sent")
+            return .result(dialog: IntentDialog(message))
+        }
+        return .result(dialog: IntentDialog(stringLiteral: store.errorMessage ?? String(localized: "Climate command failed")))
+    }
+}
+
+struct PreCoolClimateIntent: AppIntent {
+    static var title: LocalizedStringResource = "Pre-cool"
+    static var description = IntentDescription("Toggle climate at 17°C")
+    static var openAppWhenRun = false
+
+    private static let temperatureC: Double = 17
+
+    @MainActor
+    func perform() async throws -> some IntentResult & ProvidesDialog {
+        let store = VehicleStore.shared
+        let stopping = store.climateOn
+        let ok = await store.toggleClimate(temperatureC: Self.temperatureC)
+        WidgetCenter.shared.reloadAllTimelines()
+        if ok {
+            let message = stopping
+                ? LocalizedStringResource("Climate stop sent")
+                : LocalizedStringResource("Pre-cool sent")
+            return .result(dialog: IntentDialog(message))
+        }
+        return .result(dialog: IntentDialog(stringLiteral: store.errorMessage ?? String(localized: "Climate command failed")))
     }
 }
 
@@ -165,14 +217,32 @@ struct MyNiroShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: StartClimateIntent(),
             phrases: [
-                "Preheat my car with \(.applicationName)",
-                "Pre-cool my car with \(.applicationName)",
-                "Warm my car with \(.applicationName)",
-                "Cool my car with \(.applicationName)",
                 "Start climate with \(.applicationName)",
             ],
             shortTitle: "Start Climate",
             systemImageName: "snowflake"
+        )
+        AppShortcut(
+            intent: PreHeatClimateIntent(),
+            phrases: [
+                "Preheat my car with \(.applicationName)",
+                "Pre-heat my car with \(.applicationName)",
+                "Warm my car with \(.applicationName)",
+                "Pre-heat with \(.applicationName)",
+            ],
+            shortTitle: "Pre-heat",
+            systemImageName: "thermometer.sun.fill"
+        )
+        AppShortcut(
+            intent: PreCoolClimateIntent(),
+            phrases: [
+                "Pre-cool my car with \(.applicationName)",
+                "Precool my car with \(.applicationName)",
+                "Cool my car with \(.applicationName)",
+                "Pre-cool with \(.applicationName)",
+            ],
+            shortTitle: "Pre-cool",
+            systemImageName: "thermometer.snowflake"
         )
         AppShortcut(
             intent: ToggleClimateIntent(),

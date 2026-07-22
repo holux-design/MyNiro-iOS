@@ -254,8 +254,11 @@ final class VehicleStore {
     }
 
     @discardableResult
-    func startClimate() async -> Bool {
-        let options = climateDefaults.asClimateOptions()
+    func startClimate(temperatureC: Double? = nil) async -> Bool {
+        var options = climateDefaults.asClimateOptions()
+        if let temperatureC {
+            options.temperature = Temperature(value: temperatureC, units: .celsius)
+        }
         return await send(.startClimate(options), toast: String(localized: "Climate start sent"), action: .climate)
     }
 
@@ -265,11 +268,11 @@ final class VehicleStore {
     }
 
     @discardableResult
-    func toggleClimate() async -> Bool {
+    func toggleClimate(temperatureC: Double? = nil) async -> Bool {
         if climateOn {
             return await stopClimate()
         } else {
-            return await startClimate()
+            return await startClimate(temperatureC: temperatureC)
         }
     }
 

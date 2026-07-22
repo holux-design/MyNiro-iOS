@@ -2,7 +2,6 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Charge with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -13,7 +12,6 @@
       }
     },
     "Climate with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -24,7 +22,6 @@
       }
     },
     "Cool my car with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -35,7 +32,6 @@
       }
     },
     "Lock my car with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -46,7 +42,6 @@
       }
     },
     "Lock the car with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -57,7 +52,6 @@
       }
     },
     "Open my car with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -68,7 +62,6 @@
       }
     },
     "Pre-cool my car with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -78,8 +71,47 @@
         }
       }
     },
+    "Pre-cool with ${applicationName}" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorkühlen mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Pre-heat my car with ${applicationName}" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heize mein Auto mit ${applicationName} vor"
+          }
+        }
+      }
+    },
+    "Pre-heat with ${applicationName}" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorheizen mit ${applicationName}"
+          }
+        }
+      }
+    },
+    "Precool my car with ${applicationName}" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vorkühle mein Auto mit ${applicationName}"
+          }
+        }
+      }
+    },
     "Preheat my car with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -90,7 +122,6 @@
       }
     },
     "Start charging with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -101,7 +132,6 @@
       }
     },
     "Start climate with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -112,7 +142,6 @@
       }
     },
     "Stop climate with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -123,7 +152,6 @@
       }
     },
     "Toggle charge with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -134,7 +162,6 @@
       }
     },
     "Toggle climate with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -145,7 +172,6 @@
       }
     },
     "Toggle lock with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -156,7 +182,6 @@
       }
     },
     "Unlock ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -167,7 +192,6 @@
       }
     },
     "Unlock my car with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -178,7 +202,6 @@
       }
     },
     "Unlock the car with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -189,12 +212,11 @@
       }
     },
     "Warm my car with ${applicationName}" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Heize mein Auto mit ${applicationName} vor"
+            "value" : "Wärme mein Auto mit ${applicationName} vor"
           }
         }
       }
