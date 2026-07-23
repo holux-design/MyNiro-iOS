@@ -21,6 +21,9 @@ struct CachedVehicleSnapshot: Codable, Equatable {
     var climateTempC: Double?
     var updatedAt: Date
     var chargeTimeSeconds: Int64?
+    /// Last known park / vehicle GPS from Kia. Absent when no fix.
+    var latitude: Double?
+    var longitude: Double?
 
     static let storageKey = "cachedVehicleSnapshot"
 
@@ -33,6 +36,42 @@ struct CachedVehicleSnapshot: Codable, Equatable {
         if let data = try? JSONEncoder().encode(self) {
             AppGroup.defaults.set(data, forKey: Self.storageKey)
         }
+    }
+}
+
+struct WidgetActionFeedback: Codable, Equatable {
+    var message: String
+    /// `nil` = in progress, `true` = success, `false` = failure
+    var isSuccess: Bool?
+    var expiresAt: Date
+
+    static let storageKey = "widgetActionFeedback"
+    static let displayDuration: TimeInterval = 3
+
+    static func load() -> WidgetActionFeedback? {
+        guard let data = AppGroup.defaults.data(forKey: storageKey) else { return nil }
+        return try? JSONDecoder().decode(WidgetActionFeedback.self, from: data)
+    }
+
+    static func active(at date: Date = .now) -> WidgetActionFeedback? {
+        guard let value = load(), value.expiresAt > date else { return nil }
+        return value
+    }
+
+    static func show(_ message: String, success: Bool? = true, duration: TimeInterval = displayDuration) {
+        let feedback = WidgetActionFeedback(
+            message: message,
+            isSuccess: success,
+            expiresAt: Date().addingTimeInterval(duration)
+        )
+        if let data = try? JSONEncoder().encode(feedback) {
+            AppGroup.defaults.set(data, forKey: storageKey)
+            AppGroup.defaults.synchronize()
+        }
+    }
+
+    static func clear() {
+        AppGroup.defaults.removeObject(forKey: storageKey)
     }
 }
 

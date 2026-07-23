@@ -1,6 +1,50 @@
 import AppIntents
 import WidgetKit
 
+@MainActor
+private enum WidgetIntentFeedback {
+    static let widgetKind = "BatteryStatusWidget"
+
+    /// Paint success immediately, then run the car command without blocking the intent return.
+    /// WidgetKit defers timeline reloads until `perform()` finishes — awaiting the API (~5s) is why
+    /// the status used to appear late.
+    static func run(
+        successMessage: String,
+        failureFallback: String,
+        command: @MainActor @escaping () async -> Bool
+    ) async -> IntentDialog {
+        WidgetActionFeedback.show(successMessage, success: true, duration: 60)
+        WidgetCenter.shared.reloadTimelines(ofKind: widgetKind)
+
+        // Keep running after `perform()` returns — do not await the car API here.
+        DispatchQueue.global(qos: .userInitiated).async {
+            ProcessInfo.processInfo.performExpiringActivity(withReason: "MyNiro vehicle command") { expired in
+                guard !expired else { return }
+                let done = DispatchSemaphore(value: 0)
+                Task { @MainActor in
+                    defer { done.signal() }
+                    let ok = await command()
+                    if ok {
+                        WidgetActionFeedback.show(successMessage, success: true)
+                    } else {
+                        let failure = VehicleStore.shared.errorMessage ?? failureFallback
+                        WidgetActionFeedback.show(failure, success: false)
+                    }
+                    WidgetCenter.shared.reloadTimelines(ofKind: widgetKind)
+                }
+                done.wait()
+            }
+        }
+
+        return IntentDialog(stringLiteral: successMessage)
+    }
+
+    static func showFailure(_ message: String) {
+        WidgetActionFeedback.show(message, success: false)
+        WidgetCenter.shared.reloadTimelines(ofKind: widgetKind)
+    }
+}
+
 struct UnlockVehicleIntent: AppIntent {
     static var title: LocalizedStringResource = "Unlock Vehicle"
     static var description = IntentDescription("Unlock your Kia")
@@ -128,17 +172,17 @@ struct ToggleLockIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ProvidesDialog {
-        let store = VehicleStore.shared
-        let unlocking = store.isLocked
-        let ok = await store.toggleLock()
-        WidgetCenter.shared.reloadAllTimelines()
-        if ok {
-            let message = unlocking
-                ? LocalizedStringResource("Unlock sent")
-                : LocalizedStringResource("Lock sent")
-            return .result(dialog: IntentDialog(message))
+        let unlocking = CachedVehicleSnapshot.load()?.isLocked ?? true
+        let successMessage = unlocking
+            ? String(localized: "Unlock sent")
+            : String(localized: "Lock sent")
+        let dialog = await WidgetIntentFeedback.run(
+            successMessage: successMessage,
+            failureFallback: String(localized: "Lock command failed")
+        ) {
+            await VehicleStore.shared.toggleLock()
         }
-        return .result(dialog: IntentDialog(stringLiteral: store.errorMessage ?? String(localized: "Lock command failed")))
+        return .result(dialog: dialog)
     }
 }
 
@@ -149,17 +193,17 @@ struct ToggleClimateIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ProvidesDialog {
-        let store = VehicleStore.shared
-        let stopping = store.climateOn
-        let ok = await store.toggleClimate()
-        WidgetCenter.shared.reloadAllTimelines()
-        if ok {
-            let message = stopping
-                ? LocalizedStringResource("Climate stop sent")
-                : LocalizedStringResource("Climate start sent")
-            return .result(dialog: IntentDialog(message))
+        let stopping = CachedVehicleSnapshot.load()?.climateOn ?? false
+        let successMessage = stopping
+            ? String(localized: "Climate stop sent")
+            : String(localized: "Climate start sent")
+        let dialog = await WidgetIntentFeedback.run(
+            successMessage: successMessage,
+            failureFallback: String(localized: "Climate command failed")
+        ) {
+            await VehicleStore.shared.toggleClimate()
         }
-        return .result(dialog: IntentDialog(stringLiteral: store.errorMessage ?? String(localized: "Climate command failed")))
+        return .result(dialog: dialog)
     }
 }
 
@@ -170,23 +214,24 @@ struct ToggleChargeIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult & ProvidesDialog {
-        let store = VehicleStore.shared
-        // Prefer cached snapshot — widget process may not have live status yet.
-        let plugged = store.isPluggedIn
-        let charging = store.isCharging
+        let snap = CachedVehicleSnapshot.load()
+        let plugged = snap?.isPluggedIn ?? false
+        let charging = snap?.isCharging ?? false
         guard plugged || charging else {
+            let message = String(localized: "Plug in to charge")
+            WidgetIntentFeedback.showFailure(message)
             return .result(dialog: IntentDialog(LocalizedStringResource("Plug in to charge")))
         }
-        let stopping = charging
-        let ok = await store.toggleCharge()
-        WidgetCenter.shared.reloadAllTimelines()
-        if ok {
-            let message = stopping
-                ? LocalizedStringResource("Charging stop sent")
-                : LocalizedStringResource("Charging start sent")
-            return .result(dialog: IntentDialog(message))
+        let successMessage = charging
+            ? String(localized: "Charging stop sent")
+            : String(localized: "Charging start sent")
+        let dialog = await WidgetIntentFeedback.run(
+            successMessage: successMessage,
+            failureFallback: String(localized: "Charge command failed")
+        ) {
+            await VehicleStore.shared.toggleCharge()
         }
-        return .result(dialog: IntentDialog(stringLiteral: store.errorMessage ?? String(localized: "Charge command failed")))
+        return .result(dialog: dialog)
     }
 }
 

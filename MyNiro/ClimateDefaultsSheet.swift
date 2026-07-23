@@ -81,40 +81,84 @@ struct ClimateDefaultsSheet: View {
 
 struct ChargeLimitSheet: View {
     @Bindable var store: VehicleStore
-    @State private var limit: Double
+    @State private var limit: Int
+
+    private static let options = [50, 60, 70, 80, 90, 100]
 
     init(store: VehicleStore) {
         self.store = store
-        _limit = State(initialValue: Double(store.targetSocAC))
+        _limit = State(initialValue: Self.nearestOption(to: store.targetSocAC))
     }
 
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 28) {
-                Text("AC charge limit")
-                    .font(.title2.bold())
-                Text("\(Int(limit))%")
-                    .font(.system(size: 56, weight: .bold, design: .rounded))
-                    .foregroundStyle(MyNiroTheme.green)
-
-                Slider(value: $limit, in: 50...100, step: 10)
-                    .tint(MyNiroTheme.green)
-
-                Text("Sets the target state of charge for AC charging.")
-                    .font(.footnote)
-                    .foregroundStyle(MyNiroTheme.secondaryText)
-                    .multilineTextAlignment(.center)
-
-                Spacer()
+        VStack {
+            Spacer(minLength: 0)
+            GlassOptionSelect(options: Self.options, selection: $limit) { value in
+                Text("\(value)")
             }
-            .padding(24)
-            .background(MyNiroTheme.background)
+            Spacer(minLength: 0)
         }
+        .padding(.horizontal, 20)
+        .padding(.bottom, 8)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(MyNiroTheme.background)
         .preferredColorScheme(.dark)
+        .accessibilityLabel(String(localized: "AC charge limit"))
         .onDisappear {
-            let value = Int(limit)
-            guard value != store.targetSocAC else { return }
-            Task { await store.setACChargeLimit(value) }
+            guard limit != store.targetSocAC else { return }
+            Task { await store.setACChargeLimit(limit) }
+        }
+    }
+
+    private static func nearestOption(to value: Int) -> Int {
+        options.min(by: { abs($0 - value) < abs($1 - value) }) ?? 80
+    }
+}
+
+private struct GlassOptionSelect<Option: Hashable, Label: View>: View {
+    let options: [Option]
+    @Binding var selection: Option
+    @ViewBuilder var label: (Option) -> Label
+
+    var body: some View {
+        HStack(spacing: 2) {
+            ForEach(options, id: \.self) { option in
+                let isSelected = option == selection
+                Button {
+                    selection = option
+                    UISelectionFeedbackGenerator().selectionChanged()
+                } label: {
+                    label(option)
+                        .font(.subheadline.weight(.semibold))
+                        .monospacedDigit()
+                        .foregroundStyle(isSelected ? Color.black : Color.white.opacity(0.85))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .contentShape(Capsule())
+                }
+                .buttonStyle(.plain)
+                .background {
+                    if isSelected {
+                        Capsule()
+                            .fill(MyNiroTheme.green)
+                    }
+                }
+                .accessibilityAddTraits(isSelected ? .isSelected : [])
+            }
+        }
+        .padding(4)
+        .modifier(ClearGlassCapsule())
+    }
+}
+
+private struct ClearGlassCapsule: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 26, *) {
+            content.glassEffect(Glass.clear.interactive(), in: .capsule)
+        } else {
+            content
+                .background(.ultraThinMaterial, in: Capsule())
+                .overlay(Capsule().strokeBorder(Color.white.opacity(0.18), lineWidth: 1))
         }
     }
 }

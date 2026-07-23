@@ -71,7 +71,8 @@ struct WatchProvider: TimelineProvider {
             vehicleName: "EV9", vin: "", socPercent: 67, rangeKm: 293,
             isCharging: false, isPluggedIn: false, chargeSpeedKW: nil,
             targetSocAC: 80, isLocked: true, climateOn: false,
-            climateTempC: 22, updatedAt: .now, chargeTimeSeconds: nil
+            climateTempC: 22, updatedAt: .now, chargeTimeSeconds: nil,
+            latitude: nil, longitude: nil
         ))
     }
 

@@ -38,7 +38,9 @@
 		929B973000C1BACC0D4691C5 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */; };
 		96429FB24FE2A41A2109944C /* ClimateDefaultsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9E7B542B4736C7B525ABED /* ClimateDefaultsSheet.swift */; };
 		A3FBB53249010173B971B948 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */; };
+		A7C4E91B2D6F80A1B3C5D7E9 /* BatteryCardViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C4D6E8F0A1B3C5D7E9F1A3 /* BatteryCardViews.swift */; };
 		B0E3DA4610716895CE021C95 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92354C9835AD3BF83D263E1B /* Theme.swift */; };
+		B1D3E5F708A9B1C2D3E4F5A6 /* BatteryCardViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C4D6E8F0A1B3C5D7E9F1A3 /* BatteryCardViews.swift */; };
 		B400929136E7B068BCB48B7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2CDB0E8452DB6DDBCDBB2A9 /* Assets.xcassets */; };
 		B528B70F8BD81E12B137A21A /* MyNiroWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BE4FA53E10D7DB21BFB78E96 /* MyNiroWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B96D2DEC5BDEB0EB26B0E744 /* BetterBlueKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6542868D65B59E3930EE74F8 /* BetterBlueKit */; };
@@ -141,6 +143,7 @@
 		92354C9835AD3BF83D263E1B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9DDEE28AD27C14842EFE950B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B2C4D6E8F0A1B3C5D7E9F1A3 /* BatteryCardViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryCardViews.swift; sourceTree = "<group>"; };
 		BDA5DDEF43E67E48FDA8FDD3 /* MyNiroWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = MyNiroWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4FA53E10D7DB21BFB78E96 /* MyNiroWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNiroWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4B1EDE2AD0368903BE37E50 /* MyNiro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyNiro.entitlements; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				FC1F56F4FEDE8683DC9C4FE4 /* AppGroup.swift */,
+				B2C4D6E8F0A1B3C5D7E9F1A3 /* BatteryCardViews.swift */,
 				3F2E0174953CB4B9681BBFA7 /* KeychainStore.swift */,
 				9C8960ACB1D16851EFC23091 /* Localizable.xcstrings */,
 				A1B2C3D4E5F60718293A4B5C /* PhoneWatchSync.swift */,
@@ -477,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3FBB53249010173B971B948 /* AppGroup.swift in Sources */,
+				A7C4E91B2D6F80A1B3C5D7E9 /* BatteryCardViews.swift in Sources */,
 				0AFB3ABBCE8DD08D7AAF9C42 /* KeychainStore.swift in Sources */,
 				4D39B2EEBE11B3A1692914D0 /* MyNiroWidgetBundle.swift in Sources */,
 				1F2E3D4C5B6A798867554433 /* PhoneWatchSync.swift in Sources */,
@@ -491,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DA06EFA40E20D46E5063DCF /* AppGroup.swift in Sources */,
+				B1D3E5F708A9B1C2D3E4F5A6 /* BatteryCardViews.swift in Sources */,
 				78486EEA633325194188843E /* CarTabView.swift in Sources */,
 				96429FB24FE2A41A2109944C /* ClimateDefaultsSheet.swift in Sources */,
 				C06466BEFDA347F43710CB1A /* KeychainStore.swift in Sources */,
@@ -608,7 +614,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyNiroWatch/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Niro";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.holux-design.MyNiro";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				MARKETING_VERSION = 1.0;
@@ -626,7 +632,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyNiroWatchWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Niro";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Watch.Widget";
@@ -711,7 +717,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyNiroWatch/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Niro";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.holux-design.MyNiro";
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
 				MARKETING_VERSION = 1.0;
@@ -729,7 +735,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyNiroWatchWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Niro";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Watch.Widget";
@@ -746,7 +752,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyNiroWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Niro";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Widget";
@@ -764,7 +770,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Niro";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -785,7 +791,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MyNiroWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Niro";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.holux-design.MyNiro.Widget";
@@ -803,7 +809,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = MyNiro;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Niro";
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (

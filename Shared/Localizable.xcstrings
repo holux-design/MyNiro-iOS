@@ -92,6 +92,7 @@
       }
     },
     "AC charge limit" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -396,6 +397,28 @@
         }
       }
     },
+    "Directions" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Route"
+          }
+        }
+      }
+    },
+    "Directions to parked car" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Route zum geparkten Auto"
+          }
+        }
+      }
+    },
     "Done" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -491,6 +514,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gedrückt halten zum Entriegeln"
+          }
+        }
+      }
+    },
+    "Last location" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letzter Ort"
           }
         }
       }
@@ -697,6 +731,17 @@
         }
       }
     },
+    "Parked location map" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karte des Parkorts"
+          }
+        }
+      }
+    },
     "Password" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -742,6 +787,7 @@
       }
     },
     "Pre-cool" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -752,6 +798,7 @@
       }
     },
     "Pre-cool sent" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -762,6 +809,7 @@
       }
     },
     "Pre-heat" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -772,6 +820,7 @@
       }
     },
     "Pre-heat sent" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -846,6 +895,7 @@
       }
     },
     "Sets the target state of charge for AC charging." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1059,17 +1109,6 @@
         }
       }
     },
-    "Stopping charge…" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ladevorgang wird beendet…"
-          }
-        }
-      }
-    },
     "Starting…" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1143,6 +1182,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Klimaanlage stoppen"
+          }
+        }
+      }
+    },
+    "Stopping charge…" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ladevorgang wird beendet…"
           }
         }
       }
@@ -1223,6 +1273,7 @@
       }
     },
     "Toggle climate at 17°C" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1233,6 +1284,7 @@
       }
     },
     "Toggle climate at 22°C" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

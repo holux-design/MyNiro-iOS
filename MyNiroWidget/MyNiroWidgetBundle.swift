@@ -13,6 +13,13 @@ struct MyNiroWidgetBundle: WidgetBundle {
 struct BatteryEntry: TimelineEntry {
     let date: Date
     let snapshot: CachedVehicleSnapshot?
+    let feedback: WidgetActionFeedback?
+
+    init(date: Date, snapshot: CachedVehicleSnapshot?, feedback: WidgetActionFeedback? = nil) {
+        self.date = date
+        self.snapshot = snapshot
+        self.feedback = feedback
+    }
 }
 
 struct BatteryProvider: TimelineProvider {
@@ -21,13 +28,31 @@ struct BatteryProvider: TimelineProvider {
     }
 
     func getSnapshot(in context: Context, completion: @escaping (BatteryEntry) -> Void) {
-        completion(BatteryEntry(date: .now, snapshot: CachedVehicleSnapshot.load() ?? sample))
+        let now = Date.now
+        completion(
+            BatteryEntry(
+                date: now,
+                snapshot: CachedVehicleSnapshot.load() ?? sample,
+                feedback: WidgetActionFeedback.active(at: now)
+            )
+        )
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<BatteryEntry>) -> Void) {
-        let entry = BatteryEntry(date: .now, snapshot: CachedVehicleSnapshot.load())
-        let next = Calendar.current.date(byAdding: .minute, value: 15, to: .now) ?? .now.addingTimeInterval(900)
-        completion(Timeline(entries: [entry], policy: .after(next)))
+        let now = Date.now
+        let snap = CachedVehicleSnapshot.load()
+        let feedback = WidgetActionFeedback.active(at: now)
+        var entries = [BatteryEntry(date: now, snapshot: snap, feedback: feedback)]
+
+        if let feedback, feedback.expiresAt > now {
+            entries.append(BatteryEntry(date: feedback.expiresAt, snapshot: snap, feedback: nil))
+            let refresh = Calendar.current.date(byAdding: .minute, value: 15, to: feedback.expiresAt)
+                ?? feedback.expiresAt.addingTimeInterval(900)
+            completion(Timeline(entries: entries, policy: .after(refresh)))
+        } else {
+            let next = Calendar.current.date(byAdding: .minute, value: 15, to: now) ?? now.addingTimeInterval(900)
+            completion(Timeline(entries: entries, policy: .after(next)))
+        }
     }
 
     private var sample: CachedVehicleSnapshot {
@@ -44,7 +69,9 @@ struct BatteryProvider: TimelineProvider {
             climateOn: false,
             climateTempC: 22,
             updatedAt: .now,
-            chargeTimeSeconds: 3600
+            chargeTimeSeconds: 3600,
+            latitude: nil,
+            longitude: nil
         )
     }
 }
@@ -60,6 +87,7 @@ struct BatteryStatusWidget: Widget {
         .configurationDisplayName(LocalizedStringResource("My Niro"))
         .description(LocalizedStringResource("Battery, climate, unlock, and charge"))
         .supportedFamilies([.systemLarge])
+        .contentMarginsDisabled()
     }
 }
 
@@ -81,16 +109,40 @@ struct BatteryWidgetView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 8) {
             actionRow
-            Spacer(minLength: 8)
-            hero
-            batteryBar
-                .padding(.top, 16)
+            Group {
+                if isCharging {
+                    chargingBatteryCard
+                } else {
+                    VStack(spacing: 0) {
+                        hero
+                        batteryBar
+                            .padding(.top, 16)
+                    }
+                    .padding(.horizontal, 20)
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
-        .padding(.horizontal, 14)
-        .padding(.top, 14)
-        .padding(.bottom, 14)
+        .padding(8)
+    }
+
+    private var chargingBatteryCard: some View {
+        BatteryStatusCard(
+            socPercent: snap?.socPercent ?? 0,
+            rangeKm: snap?.rangeKm ?? 0,
+            targetSocAC: Int(snap?.targetSocAC ?? 80),
+            isCharging: true,
+            chargeSpeedKW: snap?.chargeSpeedKW ?? 0,
+            chargeTimeText: chargeTimeText,
+            expandsVertically: true
+        )
+    }
+
+    private var chargeTimeText: String? {
+        guard let seconds = snap?.chargeTimeSeconds, seconds > 0 else { return nil }
+        return VehicleStore.formatDuration(seconds: seconds)
     }
 
     private var hero: some View {
@@ -151,32 +203,80 @@ struct BatteryWidgetView: View {
     }
 
     private var actionRow: some View {
-        HStack(spacing: 8) {
-            WidgetActionTile(
-                intent: ToggleClimateIntent(),
-                icon: "snowflake",
-                label: climateOn
-                    ? String(format: String(localized: "On · %@"), climateTempLabel)
-                    : climateTempLabel,
-                isActive: climateOn
-            )
-            WidgetActionTile(
-                intent: ToggleLockIntent(),
-                icon: isLocked ? "lock.fill" : "lock.open.fill",
-                label: isLocked ? String(localized: "Unlock") : String(localized: "Lock"),
-                isActive: isLocked
-            )
-            WidgetActionTile(
-                intent: ToggleChargeIntent(),
-                icon: isCharging ? "bolt.fill" : "bolt",
-                label: isCharging
-                    ? String(localized: "Stop")
-                    : (isPluggedIn ? String(localized: "Start") : String(localized: "Plug in")),
-                isActive: isCharging,
-                isDisabled: !isPluggedIn && !isCharging
-            )
+        ZStack {
+            HStack(spacing: 8) {
+                WidgetActionTile(
+                    intent: ToggleClimateIntent(),
+                    icon: "snowflake",
+                    label: climateOn
+                        ? String(format: String(localized: "On · %@"), climateTempLabel)
+                        : climateTempLabel,
+                    isActive: climateOn
+                )
+                WidgetActionTile(
+                    intent: ToggleLockIntent(),
+                    icon: isLocked ? "lock.open.fill" : "lock.fill",
+                    label: isLocked ? String(localized: "Unlock") : String(localized: "Lock"),
+                    isActive: isLocked
+                )
+                WidgetActionTile(
+                    intent: ToggleChargeIntent(),
+                    icon: isCharging ? "bolt.fill" : "bolt",
+                    label: isCharging
+                        ? String(localized: "Stop")
+                        : (isPluggedIn ? String(localized: "Start") : String(localized: "Plug in")),
+                    isActive: isCharging,
+                    isDisabled: !isPluggedIn && !isCharging
+                )
+            }
+            .opacity(entry.feedback == nil ? 1 : 0)
+            .allowsHitTesting(entry.feedback == nil)
+
+            if let feedback = entry.feedback {
+                widgetStatusMessage(feedback)
+            }
         }
         .frame(maxWidth: .infinity)
+        .animation(.easeInOut(duration: 0.35), value: entry.feedback?.message)
+    }
+
+    private func widgetStatusMessage(_ feedback: WidgetActionFeedback) -> some View {
+        let icon: String = {
+            switch feedback.isSuccess {
+            case true: return "checkmark.circle.fill"
+            case false: return "exclamationmark.circle.fill"
+            case nil: return "arrow.triangle.2.circlepath"
+            }
+        }()
+        let tint: Color = {
+            switch feedback.isSuccess {
+            case true: return MyNiroTheme.green
+            case false: return Color.orange
+            case nil: return Color.white.opacity(0.85)
+            }
+        }()
+
+        return VStack(spacing: 10) {
+            Image(systemName: icon)
+                .font(.system(size: 28, weight: .semibold))
+                .foregroundStyle(tint)
+            Text(feedback.message)
+                .font(.system(size: 15, weight: .semibold))
+                .foregroundStyle(.white)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .minimumScaleFactor(0.8)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 12)
+        .background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(Color.white.opacity(0.08))
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(Color.white.opacity(0.14), lineWidth: 1)
+        }
     }
 }
 

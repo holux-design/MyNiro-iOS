@@ -99,6 +99,18 @@ final class VehicleStore {
         return Self.formatDuration(seconds: seconds)
     }
 
+    /// Parked / last-known vehicle coordinates for the map. Prefers live status, then snapshot.
+    var parkedLocation: VehicleStatus.Location? {
+        if let location = status?.location, location.hasCoordinates {
+            return location
+        }
+        if let lat = snapshot?.latitude, let lon = snapshot?.longitude {
+            let location = VehicleStatus.Location(latitude: lat, longitude: lon)
+            return location.hasCoordinates ? location : nil
+        }
+        return nil
+    }
+
     // MARK: - Auth
 
     func restoreSession() {
@@ -376,6 +388,7 @@ final class VehicleStore {
     func saveClimateDefaults(_ defaults: ClimateDefaults) {
         climateDefaults = defaults
         defaults.save()
+        reloadWidgets()
     }
 
     /// Optional service PIN used only for remote commands (lock/climate/charge).
@@ -586,6 +599,7 @@ final class VehicleStore {
 
     private func persistSnapshot() {
         guard let vehicle, let status else { return }
+        let location = status.location
         let snap = CachedVehicleSnapshot(
             vehicleName: displayName,
             vin: vehicle.vin,
@@ -604,7 +618,9 @@ final class VehicleStore {
                 return t.units.convert(t.value, to: .celsius)
             }(),
             updatedAt: Date(),
-            chargeTimeSeconds: status.evStatus?.chargeTime.components.seconds
+            chargeTimeSeconds: status.evStatus?.chargeTime.components.seconds,
+            latitude: location.hasCoordinates ? location.latitude : nil,
+            longitude: location.hasCoordinates ? location.longitude : nil
         )
         snapshot = snap
         snap.save()
